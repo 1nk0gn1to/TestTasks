@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +9,21 @@ namespace ConsoleApp1
 {
     internal class Program
     {
+        
+        public static double Calculate(string userInput)
+        {
+            string[] words = userInput.Split();
+            var sum = double.Parse(words[0]);
+            var percents = double.Parse(words[1]) / 100;
+            var month = double.Parse(words[2]);
+            sum += ((sum * percents) / 12) * month;
+            return sum;
+        }
         static void Main(string[] args)
         {
-            void Sum(int[] numbers, int initialValue)
-            {
-                int result = initialValue;
-                foreach (var n in numbers)
-                {
-                    result += n;
-                }
-                Console.WriteLine(result);
-            }
-
-            int[] nums = { 1, 2, 3, 4, 5 };
-            Sum(nums, 10);
-
-            // Sum(1, 2, 3, 4);     // так нельзя - нам надо передать массив
+            var enter = Console.ReadLine();
+            var totalSum = Calculate(enter);
+            Console.WriteLine(totalSum);
         }
     }
 }
