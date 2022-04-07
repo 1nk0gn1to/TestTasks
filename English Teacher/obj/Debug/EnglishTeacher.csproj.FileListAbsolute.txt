@@ -1,0 +1,12 @@
+C:\Program Files\Новая папка\English Teacher\bin\Debug\English Teacher.exe.config
+C:\Program Files\Новая папка\English Teacher\bin\Debug\English Teacher.exe
+C:\Program Files\Новая папка\English Teacher\bin\Debug\English Teacher.pdb
+C:\Program Files\Новая папка\English Teacher\obj\Debug\EnglishTeacher.csproj.AssemblyReference.cache
+C:\Program Files\Новая папка\English Teacher\obj\Debug\EnglishTeacher.csproj.SuggestedBindingRedirects.cache
+C:\Program Files\Новая папка\English Teacher\obj\Debug\English_Teacher.Form1.resources
+C:\Program Files\Новая папка\English Teacher\obj\Debug\English_Teacher.Properties.Resources.resources
+C:\Program Files\Новая папка\English Teacher\obj\Debug\EnglishTeacher.csproj.GenerateResource.cache
+C:\Program Files\Новая папка\English Teacher\obj\Debug\EnglishTeacher.csproj.CoreCompileInputs.cache
+C:\Program Files\Новая папка\English Teacher\obj\Debug\English Teacher.exe
+C:\Program Files\Новая папка\English Teacher\obj\Debug\English Teacher.pdb
+C:\Program Files\Новая папка\English Teacher\obj\Debug\English_Teacher.Form2.resources
