@@ -1,29 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace ConsoleApp1
 {
     internal class Program
     {
-        
-        public static double Calculate(string userInput)
+        static void Main()
         {
-            string[] words = userInput.Split();
-            var sum = double.Parse(words[0]);
-            var percents = double.Parse(words[1]) / 100;
-            var month = double.Parse(words[2]);
-            sum += ((sum * percents) / 12) * month;
-            return sum;
-        }
-        static void Main(string[] args)
-        {
-            var enter = Console.ReadLine();
-            var totalSum = Calculate(enter);
-            Console.WriteLine(totalSum);
+            var buffer = new List<string>();
+            buffer.AddRange(File.ReadAllLines(@"C:\Users\MegaComp\Desktop\1.txt"));
+            foreach (var line in buffer)
+            {
+                var generalLine = line + line + line;
+                File.AppendAllText(@"C:\Users\MegaComp\Desktop\2.txt", generalLine);
+            }
         }
     }
 }
