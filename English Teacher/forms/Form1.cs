@@ -18,7 +18,6 @@ namespace English_Teacher
 {
     public partial class Form1 : Form
     {
-        private object path;
 
         public Form1()
         {
@@ -36,13 +35,14 @@ namespace English_Teacher
             {
                 label1.Text = "Некорректно введены данные";
             }
-            if (Regex.IsMatch(textBox1.Text, "^[А-Яа-я]+$") || Regex.IsMatch(textBox2.Text, "^[A-Za-z]+$"))
+            if (Regex.IsMatch(textBox1.Text, "^[А-Яа-я0-9]+$") || Regex.IsMatch(textBox2.Text, "^[A-Za-z0-9]+$"))
             {
-                label1.Text = "Выбран не правильный язык";
+                label1.Text = "Введены неверные символы";
             }
             else
             {
-                File.AppendAllText("text.txt", $"{textBox1.Text}\t{textBox2.Text}\n");
+                File.AppendAllText("C:\\Program Files\\Новая папка\\English Teacher\\bin\\Release\\text.txt", 
+                    $"{textBox1.Text}\t{textBox2.Text}\n");
                 label1.Text = "Новое слово добавлено";
             }
             textBox1.Text = "";
@@ -60,6 +60,11 @@ namespace English_Teacher
             
         }
         public void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

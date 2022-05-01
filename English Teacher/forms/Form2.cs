@@ -34,7 +34,8 @@ namespace English_Teacher
         private void button1_Click(object sender, EventArgs e)
         {
             listBox1.Items.RemoveAt(listBox1.Items.IndexOf(listBox1.SelectedItem));
-            File.WriteAllLines("C:\\Program Files\\Новая папка\\English Teacher\\bin\\Release\\text.txt", listBox1.Items.OfType<string>());
+            File.WriteAllLines("C:\\Program Files\\Новая папка\\English Teacher\\bin\\Release\\text.txt", 
+                listBox1.Items.OfType<string>());
         }
     }
 }

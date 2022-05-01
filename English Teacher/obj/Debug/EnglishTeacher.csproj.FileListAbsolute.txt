@@ -10,3 +10,9 @@ C:\Program Files\Новая папка\English Teacher\obj\Debug\EnglishTeacher.
 C:\Program Files\Новая папка\English Teacher\obj\Debug\English Teacher.exe
 C:\Program Files\Новая папка\English Teacher\obj\Debug\English Teacher.pdb
 C:\Program Files\Новая папка\English Teacher\obj\Debug\English_Teacher.Form2.resources
+C:\Program Files\Новая папка\English Teacher\bin\Debug\EntityFramework.dll
+C:\Program Files\Новая папка\English Teacher\bin\Debug\EntityFramework.SqlServer.dll
+C:\Program Files\Новая папка\English Teacher\bin\Debug\EntityFramework.xml
+C:\Program Files\Новая папка\English Teacher\bin\Debug\EntityFramework.SqlServer.xml
+C:\Program Files\Новая папка\English Teacher\obj\Debug\EnglishTeacher.csproj.CopyComplete
+C:\Program Files\Новая папка\English Teacher\obj\Debug\English_Teacher.Form3.resources

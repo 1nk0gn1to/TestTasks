@@ -19,7 +19,7 @@ namespace Application_BL.Controller
         public User User { get; }
 
         /// <summary>
-        /// созадание нового контроллера пользователя.
+        /// создание нового контроллера пользователя.
         /// </summary>
         /// <param name="user"></param>
         /// <exception cref="ArgumentException"></exception>
