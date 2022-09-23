@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using TestTask.Model;
 
 namespace TestTask
@@ -12,24 +6,35 @@ namespace TestTask
     public class MenuMaster
     {
         List<Dish> _dishes;
-        int _countElementsOnPage;
+        int _dishesCountOnPage;
         Page _page;
 
         List<Page> pages = new List<Page>();
 
-        public MenuMaster(List<Dish> dishes, int countElementsOnPage)
+        public MenuMaster(List<Dish> dishes, int dishesCountsOnPage)
         {
             if (dishes.Count == 0)
             {
                 throw new ArgumentNullException("Список блюд не должен быть пустым.");
             }
-            else if (countElementsOnPage > 10 || countElementsOnPage <= 0)
+
+            for(int i = 0; i < dishes.Count; i++)
+            {  
+                if(Regex.IsMatch(dishes[i].Name, @"[^А-Яа-я\s\W]") || dishes[i].Name.Length > 50 || dishes[i].Name.Length < 2)
+                {
+                    throw new ArgumentException("Названия блюд должны содержать только русские буквы и символы кроме нижнего подчеркивания.\n" +
+                                                "Длина должна быть в диапозоне от 2 до 50 символов.");
+                }
+
+            }
+
+            if (dishesCountsOnPage > 10 || dishesCountsOnPage <= 0)
             {
                 throw new Exception("Количество блюд на одной странице должно быть в диапозоне от 1 до 10.");
             }
 
             _dishes = dishes;
-            _countElementsOnPage = countElementsOnPage;
+            _dishesCountOnPage = dishesCountsOnPage;
 
             CreatePages();
         }
@@ -38,13 +43,13 @@ namespace TestTask
         {
             var result = 0.0;
 
-            if (_dishes.Count % _countElementsOnPage == 1)
+            if (_dishes.Count % _dishesCountOnPage == 1)
             {
-                result = (_dishes.Count / _countElementsOnPage) + 1;
+                result = (_dishes.Count / _dishesCountOnPage) + 1;
             }
             else
             {
-                result = _dishes.Count / _countElementsOnPage;
+                result = _dishes.Count / _dishesCountOnPage;
             }
 
             for (int i = 1; i <= result; ++i)
@@ -58,19 +63,19 @@ namespace TestTask
             {
                 pages[index].DishesCurrentPage.Add(dish);
 
-                if (pages[index].DishesCurrentPage.Count == _countElementsOnPage)
+                if (pages[index].DishesCurrentPage.Count == _dishesCountOnPage)
                 {
                     index += 1;
                 }
             }
         }
 
-        public int GetCountDishes()
+        public int GetDishesCount()
         {
             return _dishes.Count;
         }
 
-        public int GetCountPages()
+        public int GetPagesCount()
         {
             return pages.Count;
         }

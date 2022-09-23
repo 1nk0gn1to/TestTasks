@@ -1,6 +1,4 @@
-﻿using System.Text.RegularExpressions;
-
-namespace TestTask.Model
+﻿namespace TestTask.Model
 {
     public class Dish
     {
@@ -13,17 +11,9 @@ namespace TestTask.Model
             }
             set 
             { 
-                if(String.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentNullException(Name);
-                }
-                else if(value.Length > 20)
-                {
-                    throw new ArgumentOutOfRangeException(Name);
-                }
                 _name = value; 
             }
         }
-        //Можно добавить еще что-нибудь (цена, размер порций)
+        //Можно добавить еще что-нибудь (описание, цена, размер порций, фото)
     }
 }

@@ -10,42 +10,42 @@ namespace TestTask.Test
         [Test]
         public void IsValidMenuMaster()
         {
-            int countDishesOnPage = 3;
+            int dishesCountOnPage = 3;
             int id = 3;
 
             List<Dish> dishes = new List<Dish>()
             {
-                new Dish() { Name = "Матча" },
+                new Dish() { Name = "Щи" },
                 new Dish() { Name = "Латте" },
-                new Dish() { Name = "Смузи" },
-                new Dish() { Name = "Джин" },
+                new Dish() { Name = "Котлета по-французски" },
+                new Dish() { Name = "Икра лососевая с гренками и сливочным соусом" },
                 new Dish() { Name = "Эскимо" },
                 new Dish() { Name = "Кровавая Мэри" },
                 new Dish() { Name = "Американо"}
             };
 
-            List<Dish> listDishes = new List<Dish>
+            List<Dish> expectedListDishes = new List<Dish>
             {
-                new Dish{Name = "Матча"},
-                new Dish{Name = "Джин"},
+                new Dish{Name = "Щи"},
+                new Dish{Name = "Икра лососевая с гренками и сливочным соусом"},
                 new Dish{Name = "Американо"}
             };
 
-            MenuMaster menu = new MenuMaster(dishes, countDishesOnPage);
+            MenuMaster menu = new MenuMaster(dishes, dishesCountOnPage);
 
             Page page = new Page();
             page.DishesCurrentPage.Add(new Dish() { Name = "Американо" });
 
-            var dishesNames = new List<string>();
-            foreach (var dish in listDishes)
+            var expectedFirstDishesNames = new List<string>();
+            foreach (var dish in expectedListDishes)
             {
-                dishesNames.Add(dish.Name);
+                expectedFirstDishesNames.Add(dish.Name);
             }
 
-            var currentDishes = new List<string>();
+            var expectedCurrentDishes = new List<string>();
             foreach (var dish in page.DishesCurrentPage)
             {
-                currentDishes.Add(dish.Name);
+                expectedCurrentDishes.Add(dish.Name);
             }
 
             var dishesCurrentPage = new List<string>();
@@ -60,11 +60,11 @@ namespace TestTask.Test
                 firstDishesAllPages.Add(dish.Name);
             }
 
-            Assert.AreEqual(7, menu.GetCountDishes());
-            Assert.AreEqual(3, menu.GetCountPages());
+            Assert.AreEqual(7, menu.GetDishesCount());
+            Assert.AreEqual(3, menu.GetPagesCount());
             Assert.AreEqual(1, menu.GetDishesCountCurrentPage(id));
-            Assert.AreEqual(currentDishes, dishesCurrentPage);
-            Assert.AreEqual(dishesNames, firstDishesAllPages);
+            Assert.AreEqual(expectedCurrentDishes, dishesCurrentPage);
+            Assert.AreEqual(expectedFirstDishesNames, firstDishesAllPages);
         }
 
         [TestCase(0, 3)]
@@ -73,7 +73,7 @@ namespace TestTask.Test
         [TestCase(3, 0)]
         [TestCase(3, 4)]
         [TestCase(3, -1)]
-        public void IsInvalidCountDishesOnPage_IsInvalidPageId(int countDishesOnPage, int id)
+        public void IsInvalidDishesCountOnPage_IsInvalidPageId(int dishesCountOnPage, int id)
         {
             List<Dish> dishes = new List<Dish>()
             {
@@ -87,7 +87,7 @@ namespace TestTask.Test
             };
             Assert.Throws<Exception>(() =>
             {
-                MenuMaster menu = new MenuMaster(dishes, countDishesOnPage);
+                MenuMaster menu = new MenuMaster(dishes, dishesCountOnPage);
                 menu.GetDishesCountCurrentPage(id);
                 menu.GetDishesCurrentPage(id);
             });
@@ -107,14 +107,36 @@ namespace TestTask.Test
         }
 
         [Test]
-        public void IsInvalidDishesCollection()
+        public void IsInvalidDishesCountCollection()
         {
-            int countDishesOnPage = 2;
+            int dishesCountOnPage = 2;
             List<Dish> dishes = new List<Dish>();
 
             Assert.Throws<ArgumentNullException>(() =>
             {
-                MenuMaster menu = new MenuMaster(dishes, countDishesOnPage);
+                MenuMaster menu = new MenuMaster(dishes, dishesCountOnPage);
+            });
+        }
+
+        [TestCase("1234")]
+        [TestCase("qwerty")]
+        [TestCase("Ч_ай")]
+        [TestCase("Латte")]
+        [TestCase("Америк1но")]
+        [TestCase("лллпфпттитидлфотидфотидфотидфмфтоощцтйшзомтфзоТщоТЦКХЩИЩХПОИТЬхФЩаитОХЙЩФОЕТИЫПЩОХТИЩОХЫТПИЩ")]
+        [TestCase("")]
+        [TestCase("а")]
+        public void IsInvalidDishesName(string dish)
+        {
+            int dishesCountOnPage = 2;
+            List<Dish> dishes = new List<Dish>()
+            {
+                new Dish() { Name = dish }
+            };
+
+            Assert.Throws<ArgumentException>(() =>
+            {
+                MenuMaster menu = new MenuMaster(dishes, dishesCountOnPage);
             });
         }
     }
