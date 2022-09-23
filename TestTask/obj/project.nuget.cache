@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "jW01bvuwAnR12RkpAIi2DTFJSyKJTtXviqXvfXWz0hk6ckcIVlYSW8ZGBCVG+q5/dfQPuqBvZGXyKjTMpDPAFg==",
+  "success": true,
+  "projectFilePath": "C:\\Program Files\\Новая папка\\TestTask\\TestTask.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\MegaComp\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\MegaComp\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\MegaComp\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512",
+    "C:\\Users\\MegaComp\\.nuget\\packages\\nunit3testadapter\\4.2.1\\nunit3testadapter.4.2.1.nupkg.sha512"
+  ],
+  "logs": []
+}
