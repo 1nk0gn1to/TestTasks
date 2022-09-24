@@ -15,12 +15,16 @@ namespace TestTask
         {
             if (dishes.Count == 0)
             {
-                throw new ArgumentNullException("Список блюд не должен быть пустым.");
+                throw new ArgumentNullException(null, "Список блюд не должен быть пустым.");
             }
 
             for(int i = 0; i < dishes.Count; i++)
             {  
-                if(Regex.IsMatch(dishes[i].Name, @"[^А-Яа-я\s\W]") || dishes[i].Name.Length > 50 || dishes[i].Name.Length < 2)
+                if(dishes[i].Name == null)
+                {
+                    throw new ArgumentNullException(null, "Имя не должно быть пустым");
+                }
+                else if(Regex.IsMatch(dishes[i].Name, @"[^А-Яа-я\s\W]") || dishes[i].Name.Length > 50 || dishes[i].Name.Length < 2)
                 {
                     throw new ArgumentException("Названия блюд должны содержать только русские буквы и символы кроме нижнего подчеркивания.\n" +
                                                 "Длина должна быть в диапозоне от 2 до 50 символов.");
@@ -42,8 +46,7 @@ namespace TestTask
         private void CreatePages()
         {
             var result = 0.0;
-
-            if (_dishes.Count % _dishesCountOnPage == 1)
+            if ((_dishes.Count % _dishesCountOnPage) > 0)
             {
                 result = (_dishes.Count / _dishesCountOnPage) + 1;
             }
@@ -52,7 +55,7 @@ namespace TestTask
                 result = _dishes.Count / _dishesCountOnPage;
             }
 
-            for (int i = 1; i <= result; ++i)
+            for (int i = 1; i <= result; i++)
             {
                 pages.Add(new Page() { Id = i });
             }
@@ -88,7 +91,7 @@ namespace TestTask
             }
             else
             {
-                throw new Exception($"Страницы под номером {id} не существует. Всего {pages.Count} страниц.");
+                throw new Exception($"Страницы под номером {id} не существует. Страницы нумеруются от цифры 1, и их общее количество: {pages.Count}.");
             }
 
             return _page.DishesCurrentPage.Count;
@@ -107,7 +110,7 @@ namespace TestTask
             }
             else
             {
-                throw new Exception($"Страницы под номером {id} не существует. Всего {pages.Count} страниц.");
+                throw new Exception($"Страницы под номером {id} не существует. Страницы нумеруются от цифры 1, и их общее количество: {pages.Count}.");
             }
         }
 
